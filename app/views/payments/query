@@ -1,0 +1,4 @@
+"payment"=>{"cards"=>{"card_type"=>"Visa", "number"=>"12345678", "code"=>"202", "date_expired"=>"2014-02-02"}, "clients"=>{"name"=>"MIleidy Tacuri"}}, "commit"=>"Create Payment"}
+
+
+

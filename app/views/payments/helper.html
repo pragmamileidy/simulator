@@ -1,0 +1,45 @@
+<head>
+  <title>Simple Search Form</title>
+</head>
+<body>
+  <!-- When submit the form, the view rendered will be the index view of our articles resource -->
+  <%= form_tag(articles_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+    <div class="input-append">
+      <%= text_field_tag :search, params[:search], class: "span2", placeholder: "Search Articles" %>
+      <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
+           of using a Rails form helper -->
+      <button class="btn" type="submit"><i class="icon-search"></i></button>
+    </div>
+  <% end %>
+  <%= yield %>
+</body>
+#######################################################################
+def Article < ActiveRecord::Base
+  attr_accessible :title, :content
+ 
+  validates :title, presence: true, uniqueness: true
+  validates :content, presence: true
+ 
+  # It returns the articles whose titles contain one or more words that form the query
+  def self.search(query)
+    # where(:title, query) -> This would return an exact match of the query
+    where("title like ?", "%#{query}%") 
+  end
+end
+#####################################################################
+def ArticlesController < ApplicationController
+  def index
+    if params[:search]
+      @articles = Article.search(params[:search]).order("created_at DESC")
+    else
+      @articles = Article.order("created_at DESC")
+    end
+  end
+end
+#####################################################################
+<% @articles.each do |article| %>
+  <div class="article">
+    <h1 class="article-title"><%= link_to article.title, article %></h1>
+    <p class="article-content"><%= article.content %></p>
+  </div>
+<% end %>

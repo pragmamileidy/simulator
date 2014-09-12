@@ -1,0 +1,6 @@
+<%= simple_form_for [@payment, @card] do |card| %>
+		<%= card.collection_radio_buttons :card_type, [['Visa'] ,['Master']], :first, :last%><br>
+		<%= card.input :number, "Número de Tarjeta" %><br>
+		<%= card.input :code, "Codigo de Tarjeta" %><br>
+		<%= card.input :date_expired, "Fecha de Expiración" %><br>
+<% end %>

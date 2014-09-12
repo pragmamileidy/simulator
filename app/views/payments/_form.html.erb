@@ -1,0 +1,13 @@
+<%= simple_form_for @payment do |f|%>
+		<%= f.fields_for :cards do |card| %>
+			<%= card.collection_radio_buttons :card_type, [['Visa'] ,['Master']], :first, :last%><br>
+			<%= card.input :number%><br>
+			<%= card.input :code %><br>
+			<%= card.input :date_expired %><br>
+		<% end %>
+		<%= f.fields_for :clients do |client| %>
+			<%= client.input :name %><br>
+		<% end %>
+		<%= f.submit 'Search' %>
+<% end %> 
+

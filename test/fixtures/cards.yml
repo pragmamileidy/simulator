@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  card_type: MyString
+  number: 1
+  code: 1
+  date_expiration: 2014-09-10
+
+two:
+  card_type: MyString
+  number: 1
+  code: 1
+  date_expiration: 2014-09-10

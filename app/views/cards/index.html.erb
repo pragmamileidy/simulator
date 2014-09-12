@@ -1,0 +1,22 @@
+<%= form_tag(cards_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :number, params[:number], placeholder: "Search Number" %>
+   <%= text_field_tag :code, params[:number], placeholder: "Search Code" %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+<table border = "1">
+	<thead>
+		<th>Card Type</th>
+		<th>Number</th>
+		<th>Code</th>
+	</thead>
+	<tbody>
+		<% @cards.each do |card| %>
+			<tr>
+				<td><%= card.card_type %></td>
+				<td><%= card.number %></td>
+				<td><%= card.code %></td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>
